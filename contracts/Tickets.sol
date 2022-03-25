@@ -81,7 +81,7 @@ contract Tickets is Ownable
         // return true;
     }
 
-    function showallticketsoftheday(uint256 date,uint256 month, uint256 year) public returns(Ticket[] memory)
+    function showallticketsoftheday(uint256 date,uint256 month, uint256 year) public view returns(Ticket[] memory)
     {
         return ticketsoftheday[year][month][date];
     }
