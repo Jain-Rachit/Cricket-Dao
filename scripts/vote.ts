@@ -8,7 +8,7 @@ import {
 } from "../helper-hardhat-config";
 import { moveBlocks } from "../utils/move-blocks";
 
-const index = 0;
+const index = 3;
 
 async function main(proposalIndex: number) {
   const proposals = JSON.parse(fs.readFileSync(proposalsFile, "utf8"));

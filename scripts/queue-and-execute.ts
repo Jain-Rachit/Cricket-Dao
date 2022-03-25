@@ -10,16 +10,16 @@ import {
 import { moveBlocks } from "../utils/move-blocks";
 import { moveTime } from "../utils/move-time";
 
-export async function queueAndExecute() {
-  const args = [NEW_STORE_VALUE];
-  const functionToCall = FUNC;
-   const teamlineup = await ethers.getContract("TeamLineup");
+export async function queueAndExecute(contractname: string) {
+  const args = ["CSK vs MI", 24, 12, 2022, 23,100];
+  const functionToCall = "addtickets";
+   const teamlineup = await ethers.getContract(contractname);
    const encodedFunctionCall = teamlineup.interface.encodeFunctionData(
      functionToCall,
      args
    );
   const descriptionHash = ethers.utils.keccak256(
-    ethers.utils.toUtf8Bytes(PROPOSAL_DESCRIPTION)
+    ethers.utils.toUtf8Bytes("proposal to add tickets")
   );
   // could also use ethers.utils.id(PROPOSAL_DESCRIPTION)
 
@@ -47,11 +47,11 @@ export async function queueAndExecute() {
     descriptionHash
   );
   await executeTx.wait(1);
-  const team = await teamlineup.showplayers();
-  console.log(team);
+  // const team = await teamlineup.showplayers();
+  // console.log(team);
 }
 
-queueAndExecute()
+queueAndExecute("Tickets")
   .then(() => process.exit(0))
   .catch((error) => {
     console.error(error);

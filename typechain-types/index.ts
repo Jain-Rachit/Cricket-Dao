@@ -26,6 +26,7 @@ export type { BCCIToken } from "./BCCIToken";
 export type { GovernorContract } from "./GovernorContract";
 export type { TimeLock } from "./TimeLock";
 export type { TeamLineup } from "./TeamLineup";
+export type { Tickets } from "./Tickets";
 
 export { AccessControl__factory } from "./factories/AccessControl__factory";
 export { IAccessControl__factory } from "./factories/IAccessControl__factory";
@@ -52,3 +53,4 @@ export { BCCIToken__factory } from "./factories/BCCIToken__factory";
 export { GovernorContract__factory } from "./factories/GovernorContract__factory";
 export { TimeLock__factory } from "./factories/TimeLock__factory";
 export { TeamLineup__factory } from "./factories/TeamLineup__factory";
+export { Tickets__factory } from "./factories/Tickets__factory";

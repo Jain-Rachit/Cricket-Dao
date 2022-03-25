@@ -3,9 +3,11 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Tickets is Ownable {
+contract Tickets is Ownable 
+{
     uint256 private numberOfgames;    
-    struct Ticket{
+    struct Ticket
+    {
         string gamename;
         uint256 seatNumber;
         uint256 ticketPrice;
@@ -13,7 +15,9 @@ contract Tickets is Ownable {
         uint256 month;
         uint256 year;
     }
-    struct Game{
+    
+    struct Game
+    {
         string gamename;
         uint256 numberOfTickets;
         uint256 date;
@@ -26,13 +30,16 @@ contract Tickets is Ownable {
     // mapping(uint => Game) public gameticket;
     // mapping(Game => tickets) public gametickets;
     // Game[] private games;
-    struct time{
+    
+    struct time
+    {
         uint256 date;
         uint256 month;
         uint256 year;
     }
-    mapping(uint256 => mapping(uint256 => mapping(uint256 =>mapping(string => Game) ))) games;
+    mapping(uint256 => mapping(uint256 => mapping(uint256 =>mapping(string => Game) ))) private games;
     //year->month->date->gamename
+    mapping(uint256 => mapping(uint256 => mapping(uint256 =>Ticket[]))) private ticketsoftheday;
     function buytickets(string memory gamename,time memory t,uint256 seatnumber) public payable returns(Ticket memory)
     {
         Game storage g = games[t.year][t.month][t.date][gamename];
@@ -42,15 +49,27 @@ contract Tickets is Ownable {
         g.tickets[seatnumber] = 0;
         g.numberOfTickets--;
         Ticket memory tt = Ticket(g.gamename,seatnumber,g.tickets[seatnumber],g.date,g.month,g.year);
+        // ticketsoftheday[t.year][t.month][t.date].push(tt);
         return tt;
     }
+    
+    // function showtickets(string memory gamename,uint256 date,uint256 month, uint256 year) public view returns(Ticket[] memory)
+    // {
+    //     Game storage g = games[year][month][date][gamename];
+    //     Ticket[] memory t;
 
-    function addtickets(string memory gamename,time memory t,uint256 seatnumber, uint256 ticketprice) public onlyOwner
+    // }
+    
+    function addtickets(string memory gamename,uint256 date,uint256 month, uint256 year,uint256 seatnumber, uint256 ticketprice) public onlyOwner
     {
-        Game storage g = games[t.year][t.month][t.date][gamename];
-        if(g.tickets[seatnumber] == 0){
+        Game storage g = games[year][month][date][gamename];
+        require(g.tickets[seatnumber] == 0,"Ticket already present");
+        // if(g.tickets[seatnumber] == 0){
             g.numberOfTickets++;
-        }
+            Ticket memory tt = Ticket(gamename,seatnumber,ticketprice,date,month,year);
+            ticketsoftheday[year][month][date].push(tt); 
+        // }
+
         g.tickets[seatnumber]=ticketprice;
         // tickets ticket = gametickets[g];
         // for(int i=0;i<ticket.length;i++)
@@ -60,5 +79,10 @@ contract Tickets is Ownable {
         // ticket.push(t);
         // gametickets[g] = ticket;
         // return true;
+    }
+
+    function showallticketsoftheday(uint256 date,uint256 month, uint256 year) public returns(Ticket[] memory)
+    {
+        return ticketsoftheday[year][month][date];
     }
 }

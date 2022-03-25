@@ -1504,47 +1504,9 @@
         "TeamLineup"
       ]
     },
-    "/mnt/c/Rachit Jain/BITS Goa/ETHernals/p1/contracts/BuyTeam.sol": {
-      "lastModificationDate": 1648025857144,
-      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
-      "sourceName": "contracts/BuyTeam.sol",
-      "solcConfig": {
-        "version": "0.8.9",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata",
-                "devdoc",
-                "userdoc",
-                "storageLayout",
-                "evm.gasEstimates"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          },
-          "metadata": {
-            "useLiteralContent": true
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
-    },
     "/mnt/c/Rachit Jain/BITS Goa/ETHernals/p1/contracts/Tickets.sol": {
-      "lastModificationDate": 1648025554092,
-      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "lastModificationDate": 1648100274511,
+      "contentHash": "2f2d608da1eeddd30613a3534175eef2",
       "sourceName": "contracts/Tickets.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -1576,9 +1538,15 @@
           }
         }
       },
-      "imports": [],
-      "versionPragmas": [],
-      "artifacts": []
+      "imports": [
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.9"
+      ],
+      "artifacts": [
+        "Tickets"
+      ]
     }
   }
 }

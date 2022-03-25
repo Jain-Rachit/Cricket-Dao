@@ -1,25 +1,25 @@
-import { HardhatRuntimeEnvironment } from "hardhat/types"
-import { DeployFunction } from "hardhat-deploy/types"
+import { HardhatRuntimeEnvironment } from "hardhat/types";
+import { DeployFunction } from "hardhat-deploy/types";
 // @ts-ignore
-import { ethers } from "hardhat"
+import { ethers } from "hardhat";
 
-const deployteamlineup: DeployFunction =async function (
-    hre : HardhatRuntimeEnvironment
+const deploytickets: DeployFunction = async function (
+  hre: HardhatRuntimeEnvironment
 ) {
   // @ts-ignore
   const { getNamedAccounts, deployments, network } = hre;
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
   log("----------------------------------------------------");
-  log("Deploying team lineup...");
-  const teamlineup = await deploy("TeamLineup", {
+  log("Deploying tickets...");
+  const teamlineup = await deploy("Tickets", {
     from: deployer,
     args: [],
     log: true,
   });
   const timeLock = await ethers.getContract("TimeLock");
   const teamlineupcontract = await ethers.getContractAt(
-    "TeamLineup",
+    "Tickets",
     teamlineup.address
   );
   const transferOwnerTx = await teamlineupcontract.transferOwnership(
@@ -27,6 +27,6 @@ const deployteamlineup: DeployFunction =async function (
   );
   await transferOwnerTx.wait(1);
   log("Done.......");
-}
+};
 
-export default deployteamlineup;
+export default deploytickets;
