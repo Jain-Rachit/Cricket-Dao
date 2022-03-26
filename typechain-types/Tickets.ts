@@ -64,6 +64,7 @@ export interface TicketsInterface extends utils.Interface {
     "buytickets(string,(uint256,uint256,uint256),uint256)": FunctionFragment;
     "owner()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
+    "showallticketsoftheday(uint256,uint256,uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
   };
 
@@ -88,6 +89,10 @@ export interface TicketsInterface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
+    functionFragment: "showallticketsoftheday",
+    values: [BigNumberish, BigNumberish, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "transferOwnership",
     values: [string]
   ): string;
@@ -97,6 +102,10 @@ export interface TicketsInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "showallticketsoftheday",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -170,6 +179,13 @@ export interface Tickets extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    showallticketsoftheday(
+      date: BigNumberish,
+      month: BigNumberish,
+      year: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[Tickets.TicketStructOutput[]]>;
+
     transferOwnership(
       newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -199,6 +215,13 @@ export interface Tickets extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  showallticketsoftheday(
+    date: BigNumberish,
+    month: BigNumberish,
+    year: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<Tickets.TicketStructOutput[]>;
+
   transferOwnership(
     newOwner: string,
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -225,6 +248,13 @@ export interface Tickets extends BaseContract {
     owner(overrides?: CallOverrides): Promise<string>;
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
+
+    showallticketsoftheday(
+      date: BigNumberish,
+      month: BigNumberish,
+      year: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<Tickets.TicketStructOutput[]>;
 
     transferOwnership(
       newOwner: string,
@@ -267,6 +297,13 @@ export interface Tickets extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    showallticketsoftheday(
+      date: BigNumberish,
+      month: BigNumberish,
+      year: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     transferOwnership(
       newOwner: string,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -295,6 +332,13 @@ export interface Tickets extends BaseContract {
 
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    showallticketsoftheday(
+      date: BigNumberish,
+      month: BigNumberish,
+      year: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     transferOwnership(

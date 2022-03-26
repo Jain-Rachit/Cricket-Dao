@@ -31,3 +31,4 @@ export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000"
 export const NEW_STORE_VALUE = [1,2,3,4,5,6,7,8,9,10,11]
 export const FUNC = "changeplayers"
 export const PROPOSAL_DESCRIPTION = "Proposal #1 77 in the Box!"
+export const TEAM_TOKEN_TO_DEPLOY = ["Chennai Super Kings","CSK"]

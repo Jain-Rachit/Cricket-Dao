@@ -1505,8 +1505,8 @@
       ]
     },
     "/mnt/c/Rachit Jain/BITS Goa/ETHernals/p1/contracts/Tickets.sol": {
-      "lastModificationDate": 1648100274511,
-      "contentHash": "2f2d608da1eeddd30613a3534175eef2",
+      "lastModificationDate": 1648249885198,
+      "contentHash": "e7c47ba146f373106dd6da0e9b39ae1e",
       "sourceName": "contracts/Tickets.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -1546,6 +1546,96 @@
       ],
       "artifacts": [
         "Tickets"
+      ]
+    },
+    "/mnt/c/Rachit Jain/BITS Goa/ETHernals/p1/contracts/TeamToken.sol": {
+      "lastModificationDate": 1648120506255,
+      "contentHash": "a674c51ec03deec7010f8d10687f7361",
+      "sourceName": "contracts/TeamToken.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol",
+        "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.2"
+      ],
+      "artifacts": [
+        "TeamToken"
+      ]
+    },
+    "/mnt/c/Rachit Jain/BITS Goa/ETHernals/p1/contracts/BuyTeam.sol": {
+      "lastModificationDate": 1648120211074,
+      "contentHash": "6e72dbde7a4ea6c683b574c7478cb6d8",
+      "sourceName": "contracts/BuyTeam.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.9"
+      ],
+      "artifacts": [
+        "BuyTeam"
       ]
     }
   }
