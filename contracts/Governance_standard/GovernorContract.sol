@@ -30,6 +30,7 @@ contract GovernorContract is Governor, GovernorSettings, GovernorCountingSimple,
         s_votingDelay = _votingDelay;
         s_votingPeriod = _votingPeriod;
     }
+    uint256[] public Proposals;
   function votingDelay() public view override(IGovernor, GovernorSettings) returns (uint256) {
     return s_votingDelay; // 1 = 1 block
   }
@@ -90,7 +91,10 @@ contract GovernorContract is Governor, GovernorSettings, GovernorCountingSimple,
         bytes[] memory calldatas,
         string memory description
     ) public override(Governor, IGovernor) returns (uint256) {
-        return super.propose(targets, values, calldatas, description);
+        // uint256 proposalId = hashProposal(targets, values, calldatas, keccak256(bytes(description)));
+        uint256 proposalId = super.propose(targets, values, calldatas, description);
+        Proposals.push(proposalId);
+        return proposalId;
     }
 
     function proposalThreshold()

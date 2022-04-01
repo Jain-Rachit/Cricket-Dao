@@ -62,6 +62,7 @@ export async function propose_buytickets(args: any[], functionToCall: string, pr
   }
   const proposeReceipt = await proposeTx.wait(1)
   const proposalId = proposeReceipt.events[0].args.proposalId
+  
  const proposalState = await governor.state(proposalId)
   const proposalSnapShot = await governor.proposalSnapshot(proposalId)
   const proposalDeadline = await governor.proposalDeadline(proposalId)

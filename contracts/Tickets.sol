@@ -14,6 +14,7 @@ contract Tickets is Ownable
         uint256 day;
         uint256 month;
         uint256 year;
+        bool sold;
     }
     
     struct Game
@@ -48,7 +49,7 @@ contract Tickets is Ownable
         require(msg.value == g.tickets[seatnumber],'Amount is not equal to ticket price');
         g.tickets[seatnumber] = 0;
         g.numberOfTickets--;
-        Ticket memory tt = Ticket(g.gamename,seatnumber,g.tickets[seatnumber],g.date,g.month,g.year);
+        Ticket memory tt = Ticket(g.gamename,seatnumber,g.tickets[seatnumber],g.date,g.month,g.year,true);
         // ticketsoftheday[t.year][t.month][t.date].push(tt);
         return tt;
     }
@@ -66,7 +67,7 @@ contract Tickets is Ownable
         require(g.tickets[seatnumber] == 0,"Ticket already present");
         // if(g.tickets[seatnumber] == 0){
             g.numberOfTickets++;
-            Ticket memory tt = Ticket(gamename,seatnumber,ticketprice,date,month,year);
+            Ticket memory tt = Ticket(gamename,seatnumber,ticketprice,date,month,year,false);
             ticketsoftheday[year][month][date].push(tt); 
         // }
 
@@ -83,6 +84,20 @@ contract Tickets is Ownable
 
     function showallticketsoftheday(uint256 date,uint256 month, uint256 year) public view returns(Ticket[] memory)
     {
-        return ticketsoftheday[year][month][date];
+        uint256 count=0;
+        uint256 j=0;
+        for(uint i=0;i<ticketsoftheday[year][month][date].length;i++){
+            if(ticketsoftheday[year][month][date][i].sold==false){
+                count++;
+            }
+        }
+        Ticket[] memory t = new Ticket[](count);
+        for(uint i=0;i<ticketsoftheday[year][month][date].length;i++){
+            if(ticketsoftheday[year][month][date][i].sold==false){                
+                t[j] = ticketsoftheday[year][month][date][i];
+                j++;
+            }
+        }
+        return t;
     }
 }
