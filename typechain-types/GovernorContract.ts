@@ -23,6 +23,7 @@ export interface GovernorContractInterface extends utils.Interface {
   functions: {
     "BALLOT_TYPEHASH()": FunctionFragment;
     "COUNTING_MODE()": FunctionFragment;
+    "Proposals(uint256)": FunctionFragment;
     "castVote(uint256,uint8)": FunctionFragment;
     "castVoteBySig(uint256,uint8,uint8,bytes32,bytes32)": FunctionFragment;
     "castVoteWithReason(uint256,uint8,string)": FunctionFragment;
@@ -47,6 +48,7 @@ export interface GovernorContractInterface extends utils.Interface {
     "setProposalThreshold(uint256)": FunctionFragment;
     "setVotingDelay(uint256)": FunctionFragment;
     "setVotingPeriod(uint256)": FunctionFragment;
+    "showproposals()": FunctionFragment;
     "state(uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "timelock()": FunctionFragment;
@@ -65,6 +67,10 @@ export interface GovernorContractInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "COUNTING_MODE",
     values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "Proposals",
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "castVote",
@@ -159,6 +165,10 @@ export interface GovernorContractInterface extends utils.Interface {
     functionFragment: "setVotingPeriod",
     values: [BigNumberish]
   ): string;
+  encodeFunctionData(
+    functionFragment: "showproposals",
+    values?: undefined
+  ): string;
   encodeFunctionData(functionFragment: "state", values: [BigNumberish]): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
@@ -192,6 +202,7 @@ export interface GovernorContractInterface extends utils.Interface {
     functionFragment: "COUNTING_MODE",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "Proposals", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "castVote", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "castVoteBySig",
@@ -259,6 +270,10 @@ export interface GovernorContractInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setVotingPeriod",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "showproposals",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
@@ -443,6 +458,11 @@ export interface GovernorContract extends BaseContract {
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<[string]>;
 
+    Proposals(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
     castVote(
       proposalId: BigNumberish,
       support: BigNumberish,
@@ -574,6 +594,8 @@ export interface GovernorContract extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    showproposals(overrides?: CallOverrides): Promise<[BigNumber[]]>;
+
     state(
       proposalId: BigNumberish,
       overrides?: CallOverrides
@@ -608,6 +630,8 @@ export interface GovernorContract extends BaseContract {
   BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
   COUNTING_MODE(overrides?: CallOverrides): Promise<string>;
+
+  Proposals(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
   castVote(
     proposalId: BigNumberish,
@@ -740,6 +764,8 @@ export interface GovernorContract extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  showproposals(overrides?: CallOverrides): Promise<BigNumber[]>;
+
   state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<number>;
 
   supportsInterface(
@@ -771,6 +797,11 @@ export interface GovernorContract extends BaseContract {
     BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<string>;
+
+    Proposals(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     castVote(
       proposalId: BigNumberish,
@@ -903,6 +934,8 @@ export interface GovernorContract extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    showproposals(overrides?: CallOverrides): Promise<BigNumber[]>;
+
     state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<number>;
 
     supportsInterface(
@@ -1033,6 +1066,11 @@ export interface GovernorContract extends BaseContract {
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<BigNumber>;
 
+    Proposals(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     castVote(
       proposalId: BigNumberish,
       support: BigNumberish,
@@ -1158,6 +1196,8 @@ export interface GovernorContract extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    showproposals(overrides?: CallOverrides): Promise<BigNumber>;
+
     state(
       proposalId: BigNumberish,
       overrides?: CallOverrides
@@ -1193,6 +1233,11 @@ export interface GovernorContract extends BaseContract {
     BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    Proposals(
+      arg0: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     castVote(
       proposalId: BigNumberish,
@@ -1318,6 +1363,8 @@ export interface GovernorContract extends BaseContract {
       newVotingPeriod: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
+
+    showproposals(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     state(
       proposalId: BigNumberish,

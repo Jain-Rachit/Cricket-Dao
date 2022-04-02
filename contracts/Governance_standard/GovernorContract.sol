@@ -13,6 +13,7 @@ contract GovernorContract is Governor, GovernorSettings, GovernorCountingSimple,
 {
     uint256 public s_votingDelay;
     uint256 public s_votingPeriod;
+    uint256[] public Proposals;
 
     constructor(
         ERC20Votes _token,
@@ -30,7 +31,10 @@ contract GovernorContract is Governor, GovernorSettings, GovernorCountingSimple,
         s_votingDelay = _votingDelay;
         s_votingPeriod = _votingPeriod;
     }
-    uint256[] public Proposals;
+
+    function showproposals() public view returns(uint256[] memory){
+        return Proposals;
+    } 
   function votingDelay() public view override(IGovernor, GovernorSettings) returns (uint256) {
     return s_votingDelay; // 1 = 1 block
   }

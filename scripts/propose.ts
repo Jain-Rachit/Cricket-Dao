@@ -85,7 +85,7 @@ export async function propose_buytickets(args: any[], functionToCall: string, pr
 //     process.exit(1)
 //   })
 
-propose_buytickets(["CSK vs MI",24,12,2022,23,100],"addtickets" ,"proposal to add tickets" )
+propose_buytickets(["CSK vs MI",28,12,2022,23,100],"addtickets" ,"proposal to add tickets" )
   .then(() => process.exit(0))
   .catch((error) => {
     console.error(error);

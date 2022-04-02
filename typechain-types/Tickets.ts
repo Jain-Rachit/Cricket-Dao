@@ -38,6 +38,7 @@ export declare namespace Tickets {
     day: BigNumberish;
     month: BigNumberish;
     year: BigNumberish;
+    sold: boolean;
   };
 
   export type TicketStructOutput = [
@@ -46,7 +47,8 @@ export declare namespace Tickets {
     BigNumber,
     BigNumber,
     BigNumber,
-    BigNumber
+    BigNumber,
+    boolean
   ] & {
     gamename: string;
     seatNumber: BigNumber;
@@ -54,6 +56,7 @@ export declare namespace Tickets {
     day: BigNumber;
     month: BigNumber;
     year: BigNumber;
+    sold: boolean;
   };
 }
 

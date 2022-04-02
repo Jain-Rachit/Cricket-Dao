@@ -658,8 +658,8 @@
       ]
     },
     "/mnt/c/Rachit Jain/BITS Goa/ETHernals/p1/contracts/Governance_standard/GovernorContract.sol": {
-      "lastModificationDate": 1647975232777,
-      "contentHash": "8994c642a3cd4188183413ab067bc918",
+      "lastModificationDate": 1648919193812,
+      "contentHash": "0a13fee546e1fc36e0148d0d3a513b00",
       "sourceName": "contracts/Governance_standard/GovernorContract.sol",
       "solcConfig": {
         "version": "0.8.9",
@@ -1505,8 +1505,8 @@
       ]
     },
     "/mnt/c/Rachit Jain/BITS Goa/ETHernals/p1/contracts/Tickets.sol": {
-      "lastModificationDate": 1648249885198,
-      "contentHash": "e7c47ba146f373106dd6da0e9b39ae1e",
+      "lastModificationDate": 1648834303154,
+      "contentHash": "2717c1e0a35c0df1e6edf035342ddbc4",
       "sourceName": "contracts/Tickets.sol",
       "solcConfig": {
         "version": "0.8.9",
