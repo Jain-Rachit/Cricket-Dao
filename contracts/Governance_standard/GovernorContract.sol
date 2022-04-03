@@ -98,6 +98,7 @@ contract GovernorContract is Governor, GovernorSettings, GovernorCountingSimple,
         // uint256 proposalId = hashProposal(targets, values, calldatas, keccak256(bytes(description)));
         uint256 proposalId = super.propose(targets, values, calldatas, description);
         Proposals.push(proposalId);
+        ProposalsDescription[proposalId] = description;
         return proposalId;
     }
 
