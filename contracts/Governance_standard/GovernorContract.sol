@@ -14,7 +14,7 @@ contract GovernorContract is Governor, GovernorSettings, GovernorCountingSimple,
     uint256 public s_votingDelay;
     uint256 public s_votingPeriod;
     uint256[] public Proposals;
-
+    mapping(uint256 => string) public ProposalsDescription; 
     constructor(
         ERC20Votes _token,
         TimelockController _timelock,
