@@ -7,9 +7,6 @@ Any member of the DAO can put out proposals and all the other members can vote Y
 
 <h3>Use Cases:</h3>
 <li>Fans get their say in decisions(through voting)</li>
-<li></li>
-<li></li>
-
 
 <h3>Future Plans:</h3>
 <li>Adding more incentives to BCCI Token(example: special discount/seats to the member who are a part of the DAO for more than a particular time)</li>
